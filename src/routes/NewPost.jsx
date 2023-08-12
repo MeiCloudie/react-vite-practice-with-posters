@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-import classes from './NewPost.module.css';
-import Modal from '../components/Modal';
+import classes from "./NewPost.module.css";
+import Modal from "../components/Modal";
 
-function NewPost({ onCancel, onAddPost }) {
-  const [enteredBody, setEnteredBody] = useState('');
-  const [enteredAuthor, setEnteredAuthor] = useState('');
+function NewPost({ onAddPost }) {
+  const [enteredBody, setEnteredBody] = useState("");
+  const [enteredAuthor, setEnteredAuthor] = useState("");
 
   function bodyChangeHandler(event) {
     setEnteredBody(event.target.value);
@@ -22,7 +23,7 @@ function NewPost({ onCancel, onAddPost }) {
       author: enteredAuthor,
     };
     onAddPost(postData);
-    onCancel();
+    // onCancel();
   }
 
   return (
@@ -42,9 +43,9 @@ function NewPost({ onCancel, onAddPost }) {
           />
         </p>
         <p className={classes.actions}>
-          <button type="button" onClick={onCancel}>
+          <Link to=".." type="button">
             Cancel
-          </button>
+          </Link>
           <button>Submit</button>
         </p>
       </form>
